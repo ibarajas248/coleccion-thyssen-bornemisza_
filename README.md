@@ -1,4 +1,4 @@
-# Proyecto de Web Scraping de Obras de la Colección del Museo Thyssen-Bornemisza
+# Proyecto de documentación de Obras de la Colección del Museo Thyssen-Bornemisza
 
 ## Descripción del Proyecto
 
