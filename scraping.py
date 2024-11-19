@@ -2,9 +2,17 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from lxml import etree
+from IPython.display import Image, display
+import requests
+from PIL import Image as PILImage
+from io import BytesIO
 
+from matplotlib import pyplot as plt
 
 # Función para raspar los detalles adicionales de una obra
+# Función para raspar los detalles adicionales de una obra
+# Crear una figura para mostrar las imágenes
+fig, ax = plt.subplots()
 def scrape_additional_info(link):
     response = requests.get(link)
     if response.status_code == 200:
@@ -43,7 +51,7 @@ def scrape_additional_info(link):
             if ubicacion_xpath:
                 # Obtener el texto del primer nodo encontrado
                 ubicacion_text = ubicacion_xpath[0].text.strip()
-                #print(ubicacion_text)
+
             # Buscar el div que contiene el enlace de la imagen en el atributo 'data-href'
             image_div = soup.find("div",
                                   class_="u-absolute u-inset-0 u-z-0 u-bg-gray-lightest u-static@print is-hidden js-zoom-map-viewer")
@@ -51,7 +59,25 @@ def scrape_additional_info(link):
             if image_div:
                 # Extraer el enlace de la imagen desde el atributo 'data-href'
                 image_url = image_div.get("data-href", "Imagen no disponible")
-                #print(image_url)  # Para verificar si se está obteniendo correctamente la URL
+
+            if image_url != "Imagen no disponible":
+                try:
+                    # Solicitar la imagen desde la URL
+                    img_response = requests.get(image_url)
+                    if img_response.status_code == 200:
+                        img = PILImage.open(BytesIO(img_response.content))
+
+                        # Mostrar la imagen en el mismo visualizador
+                        ax.clear()  # Limpiar el eje antes de mostrar la nueva imagen
+                        ax.imshow(img)
+                        ax.axis('off')  # Opcional: Ocultar los ejes
+                        plt.draw()  # Redibujar la imagen
+                        plt.pause(0.01)  # Pausa breve para actualizar la ventana de la imagen
+
+                    else:
+                        print("No se pudo cargar la imagen.")
+                except Exception as e:
+                    print(f'Error al cargar la imagen: {e}')
 
             # Localizar el texto adicional utilizando XPath
             codigo_inventario = dom.xpath(
@@ -98,6 +124,7 @@ def scrape_additional_info(link):
             "technique_info": "Error",
             "ubicacion_info": "Error"  # Si no se puede obtener la información, devolver "Error"
         }
+
 
 
 
@@ -167,7 +194,7 @@ def scrape_page(page_number):
 
 
 # Número total de páginas a raspar
-total_pages = 1  # Cambia este valor según el número de páginas que deseas raspar
+total_pages = 1000  # Cambia este valor según el número de páginas que deseas raspar
 
 # Lista para almacenar todos los datos
 all_data = []
