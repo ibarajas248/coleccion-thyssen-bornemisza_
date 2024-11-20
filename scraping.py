@@ -59,7 +59,7 @@ def scrape_additional_info(link):
             if image_div:
                 # Extraer el enlace de la imagen desde el atributo 'data-href'
                 image_url = image_div.get("data-href", "Imagen no disponible")
-                """
+
             if image_url != "Imagen no disponible":
                 try:
                     # Solicitar la imagen desde la URL
@@ -79,7 +79,7 @@ def scrape_additional_info(link):
                 except Exception as e:
                     print(f'Error al cargar la imagen: {e}')
                     
-                """
+
 
             # Localizar el texto adicional utilizando XPath
             codigo_inventario = dom.xpath(
