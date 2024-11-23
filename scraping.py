@@ -30,6 +30,17 @@ def scrape_additional_info(link):
                 child_div = parent_div.find("div", class_="u-mb@xs")
                 if child_div:
                     additional_text = child_div.get_text(separator="\n").strip()
+                else:
+
+                    fallback_div = soup.find("div", id="rs_artwork_description", class_="u-mb@xs")
+                    if fallback_div:
+                        additional_text = fallback_div.get_text(separator="\n").strip()
+                    else:
+                        additional_text = None  # Si tampoco se encuentra, asignar None o un valor predeterminado
+
+
+
+
 
             # Localizar el tamaño usando XPath
             size_xpath = dom.xpath('//*[@id="main_content"]/div[2]/article/div[1]/div[2]/div/div/div[2]/div[2]/div[1]/div')
@@ -196,7 +207,7 @@ def scrape_page(page_number):
 
 
 # Número total de páginas a raspar
-total_pages = 60  # Cambia este valor según el número de páginas que deseas raspar
+total_pages = 1  # Cambia este valor según el número de páginas que deseas raspar
 
 # Lista para almacenar todos los datos
 all_data = []
