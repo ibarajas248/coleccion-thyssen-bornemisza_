@@ -224,5 +224,8 @@ df = pd.DataFrame(all_data)
 
 # Guardar el DataFrame en un archivo Excel
 df.to_excel('museo_obras_con_info_adicional.xlsx', index=False)
+# Guardar el DataFrame en un archivo JSON
+df.to_json('museo_obras_con_info_adicional.json', orient='records', indent=4)
+print('Archivo JSON creado con éxito.')
 
 print('Archivo Excel creado con éxito.')
