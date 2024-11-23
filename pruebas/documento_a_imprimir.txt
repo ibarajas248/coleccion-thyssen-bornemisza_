@@ -1,0 +1,8 @@
+Título: La noche estrellada
+Autor: Vincent van Gogh
+Fecha: 1889
+Ubicación: Museo Thyssen
+Técnica: Óleo sobre lienzo
+Dimensiones: 73.7 cm × 92.1 cm
+
+¡Este es un ejemplo de impresión desde Python!
