@@ -73,7 +73,7 @@ def scrape_additional_info(link):
 
 
 
-            """
+
             
             if image_url != "Imagen no disponible":
                 try:
@@ -93,7 +93,7 @@ def scrape_additional_info(link):
                         print("No se pudo cargar la imagen.")
                 except Exception as e:
                     print(f'Error al cargar la imagen: {e}')
-            """
+
                     
 
 
@@ -212,7 +212,7 @@ def scrape_page(page_number):
 
 
 # Número total de páginas a raspar
-total_pages = 80  # Cambia este valor según el número de páginas que deseas raspar
+total_pages = 2  # Cambia este valor según el número de páginas que deseas raspar
 
 # Lista para almacenar todos los datos
 all_data = []
@@ -228,7 +228,7 @@ for page in range(1, total_pages + 1):
 df = pd.DataFrame(all_data)
 
 # Guardar el DataFrame en un archivo Excel
-df.to_excel('museo_obras_con_info_adicional.xlsx', index=False)
+df.to_excel('museo_obras_con_info_adicional_1.xlsx', index=False)
 # Guardar el DataFrame en un archivo JSON
 df.to_json('museo_obras_con_info_adicional.json', orient='records', indent=4)
 print('Archivo JSON creado con éxito.')
