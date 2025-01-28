@@ -55,9 +55,7 @@ El acceso a información sobre obras de arte puede ser limitado o poco estructur
    - Crear un archivo Excel con la información estructurada.
    - Generar visualizaciones o reportes basados en la colección, como gráficos que representen la distribución de obras por autor o período.
 
-### Consideraciones Éticas y Legales
 
-Es fundamental tener en cuenta las implicaciones éticas y legales del web scraping. Se debe respetar los términos de uso del sitio web del museo y asegurarse de que el proceso de scraping no afecte negativamente su funcionamiento. Además, se debe prestar especial atención a los derechos de autor relacionados con las imágenes y descripciones de las obras.
 
 ### Impacto del Proyecto
 
